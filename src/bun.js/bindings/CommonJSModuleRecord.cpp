@@ -219,7 +219,7 @@ RequireFunctionPrototype* RequireFunctionPrototype::create(
 void RequireFunctionPrototype::finishCreation(JSC::VM& vm)
 {
     Base::finishCreation(vm);
-    ASSERT(inherits(vm, info()));
+    ASSERT(inherits(info()));
 
     reifyStaticProperties(vm, info(), RequireFunctionPrototypeValues, *this);
     JSC::JSFunction* requireDotMainFunction = JSFunction::create(
@@ -445,7 +445,7 @@ public:
     void finishCreation(JSC::VM& vm, JSC::JSGlobalObject* globalObject)
     {
         Base::finishCreation(vm);
-        ASSERT(inherits(vm, info()));
+        ASSERT(inherits(info()));
         reifyStaticProperties(vm, JSCommonJSModule::info(), JSCommonJSModulePrototypeTableValues, *this);
 
         this->putDirect(vm, clientData(vm)->builtinNames().requirePublicName(), (static_cast<Zig::GlobalObject*>(globalObject))->requireFunctionUnbound(), PropertyAttribute::Builtin | PropertyAttribute::Function | 0);
@@ -464,7 +464,7 @@ const JSC::ClassInfo JSCommonJSModulePrototype::s_info = { "Module"_s, &Base::s_
 void JSCommonJSModule::finishCreation(JSC::VM& vm, JSC::JSString* id, JSValue filename, JSC::JSString* dirname, JSC::JSSourceCode* sourceCode)
 {
     Base::finishCreation(vm);
-    ASSERT(inherits(vm, info()));
+    ASSERT(inherits(info()));
     m_id.set(vm, this, id);
     m_filename.set(vm, this, filename);
     m_dirname.set(vm, this, dirname);
@@ -823,7 +823,7 @@ JSC_DEFINE_HOST_FUNCTION(jsFunctionRequireCommonJS, (JSGlobalObject * lexicalGlo
 void RequireResolveFunctionPrototype::finishCreation(JSC::VM& vm)
 {
     Base::finishCreation(vm);
-    ASSERT(inherits(vm, info()));
+    ASSERT(inherits(info()));
 
     reifyStaticProperties(vm, RequireResolveFunctionPrototype::info(), RequireResolveFunctionPrototypeValues, *this);
     JSC_TO_STRING_TAG_WITHOUT_TRANSITION();
