@@ -5,11 +5,9 @@ tasks:
       export PATH=./tools/zig:$PATH
       && echo "{\"zig_exe_path\":\"$(pwd)/tools/zig/zig\"}" > ~/.config/zls.json
       && echo
-      && echo workspace start - zig build run ...
-     
+      && echo workspace start - zig build run
       && sudo rm -r /usr/lib/llvm-14
       && sudo rm -r /usr/lib/clang /usr/bin/clang-14 /usr/share/man/man1/clang-14.1.gz
-
       && wget https://apt.llvm.org/llvm.sh
       && chmod +x llvm.sh
       && sudo ./llvm.sh 16
