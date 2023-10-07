@@ -1,12 +1,11 @@
 tasks:
   - name: bun gitpod env
-    init: ./tools/update-tools.sh
+    init:  chmod +x ./tools/update-tools.sh && ./tools/update-tools.sh
     command:
       export PATH=./tools/zig:$PATH
       && echo "{\"zig_exe_path\":\"$(pwd)/tools/zig/zig\"}" > ~/.config/zls.json
       && echo
-      && echo workspace start - zig build run ... 
-      && chmod +x ./tools/update-tools.sh
+      && echo workspace start - zig build run ...
       && wget https://apt.llvm.org/llvm.sh
       && chmod +x llvm.sh
       && sudo ./llvm.sh 16
